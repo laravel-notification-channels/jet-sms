@@ -1,13 +1,13 @@
 # JetSMS Notification Channel For Laravel 5.3
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/jetsms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jetsms)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jet-sms)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/laravel-notification-channels/jetsms/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/jetsms)
+[![Build Status](https://img.shields.io/travis/laravel-notification-channels/jet-sms/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/jet-sms)
 [![StyleCI](https://styleci.io/repos/74170987/shield?branch=master)](https://styleci.io/repos/74170987)
 [![SensioLabsInsight](https://img.shields.io/sensiolabs/i/b73c0a0c-bfcf-44f3-b3ab-ab4587b21ee8.svg?style=flat-square)](https://insight.sensiolabs.com/projects/b73c0a0c-bfcf-44f3-b3ab-ab4587b21ee8)
-[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/jetsms.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jetsms)
-[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/jetsms/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jetsms/?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/jetsms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jetsms)
+[![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jet-sms)
+[![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/jet-sms/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jet-sms/?branch=master)
+[![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jet-sms)
 
 This package makes it easy to send notifications using [JetSMS](http://www.jetsms.net) with Laravel 5.3.
 
@@ -30,7 +30,7 @@ This package makes it easy to send notifications using [JetSMS](http://www.jetsm
 You can install this package via composer:
 
 ``` bash
-composer require laravel-notification-channels/jetsms
+composer require laravel-notification-channels/jet-sms
 ```
 Next add the service provider to your `config/app.php`:
 
