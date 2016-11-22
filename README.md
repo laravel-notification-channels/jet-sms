@@ -14,9 +14,10 @@ This package makes it easy to send notifications using [JetSMS](http://www.jetsm
 ## Contents
 
 - [Installation](#installation)
-	- [Setting up the JetSMS service](#setting-up-the-JetSMS-service)
+    - [Setting up the JetSMS service](#setting-up-the-jetsms-service)
 - [Usage](#usage)
-	- [Available methods](#available-methods)
+    - [Available methods](#available-methods)
+    - [Available events](#available-events)
 - [Changelog](#changelog)
 - [Testing](#testing)
 - [Security](#security)
@@ -123,6 +124,87 @@ public function __construct($content, $number, $originator = null, $sendDate = n
 If you both place the originator (Outbox name) to your configuration and
 your JetSMSMessage instance, the outbox name set by the JetSMSMessage
 instance will be valid.
+
+### Available events
+
+JetSMS Notification channel comes with two handy events which provides the required information about the SMS messages.
+
+1. **Message Was Sent** (`NotificationChannels\JetSMS\Events\MessageWasSent`)
+
+This event is fired shortly after the message is sent. An example handler is presented below:
+
+```php
+namespace App\Listeners;
+
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use NotificationChannels\JetSMS\Events\MessageWasSent;
+
+class SentMessageHandler
+{
+    /**
+     * Handle the event.
+     *
+     * @param  MessageWasSent  $event
+     * @return void
+     */
+    public function handle(MessageWasSent $event)
+    {
+        $response = $event->response;
+        $message = $response->message;
+
+        // The message properties.
+        \Log::info($message->content());
+        \Log::info($message->number());
+        \Log::info($message->originator());
+        \Log::info($message->sendDate());
+
+        // Message as array.
+        \Log::info($message->toArray());
+
+        // API Response properties.
+        \Log::info($response->isSuccess());
+        \Log::info($response->errorCode());
+        \Log::info($response->errorMessage());
+        \Log::info($response->messageReportIdentifiers());
+    }
+}
+```
+
+2. **Sending Message** (`NotificationChannels\JetSMS\Events`)
+
+This event is fired just before the send request. An example handler is presented below.
+
+```php
+namespace App\Listeners;
+
+use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use NotificationChannels\JetSMS\Events\SendingMessage;
+
+class SendingMessageHandler
+{
+    /**
+     * Handle the event.
+     *
+     * @param  SendingMessage  $event
+     * @return void
+     */
+    public function handle(SendingMessage $event)
+    {
+        $message = $response->message;
+
+        // The message properties.
+        \Log::info($message->content());
+        \Log::info($message->number());
+        \Log::info($message->originator());
+        \Log::info($message->sendDate());
+
+        // Message as array.
+        \Log::info($message->toArray());
+    }
+}
+```
 
 ### Notes
 
