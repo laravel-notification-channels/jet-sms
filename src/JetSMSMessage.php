@@ -63,11 +63,11 @@ final class JetSMSMessage implements JetSMSMessageInterface
     }
 
     /**
-     * Convert the sms message to sms parameters.
+     * Get the message properties as array.
      *
      * @return array
      */
-    public function toRequestParams()
+    public function toArray()
     {
         return array_filter([
             'Msisdns'        => $this->number(),
@@ -75,6 +75,16 @@ final class JetSMSMessage implements JetSMSMessageInterface
             'SendDate'       => $this->sendDate() ? $this->sendDate()->format($this->dateFormat()) : null,
             'TransmissionID' => $this->originator(),
         ]);
+    }
+
+    /**
+     * Convert the sms message to sms parameters.
+     *
+     * @return array
+     */
+    public function toRequestParams()
+    {
+        return $this->toArray();
     }
 
     /**

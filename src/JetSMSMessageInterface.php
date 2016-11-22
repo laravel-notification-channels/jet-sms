@@ -39,6 +39,13 @@ interface JetSMSMessageInterface
     public function sendDate();
 
     /**
+     * Get the message properties as array.
+     *
+     * @return array
+     */
+    public function toArray();
+
+    /**
      * Convert the sms message to request sms parameters.
      *
      * @return array
