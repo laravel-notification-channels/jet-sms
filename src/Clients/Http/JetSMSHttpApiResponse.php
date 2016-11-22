@@ -62,8 +62,8 @@ final class JetSMSHttpApiResponse implements JetSMSApiResponseInterface
      */
     public function errorMessage()
     {
-        if($this->errorCode() === 0) {
-            return null;
+        if ($this->errorCode() === 0) {
+            return;
         }
 
         return $this->makeErrorMessage($this->errorCode());
@@ -117,7 +117,7 @@ final class JetSMSHttpApiResponse implements JetSMSApiResponseInterface
      */
     private function readResponseBodyString($responseBodyString)
     {
-        $responseLines = array_filter(array_map(function($value) {
+        $responseLines = array_filter(array_map(function ($value) {
             return trim($value);
         }, explode("\n", $responseBodyString)));
 
