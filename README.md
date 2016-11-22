@@ -151,7 +151,7 @@ class SentMessageHandler
     public function handle(MessageWasSent $event)
     {
         $response = $event->response;
-        $message = $response->message;
+        $message = $event->message;
 
         // The message properties.
         \Log::info($message->content());
@@ -192,7 +192,7 @@ class SendingMessageHandler
      */
     public function handle(SendingMessage $event)
     {
-        $message = $response->message;
+        $message = $event->message;
 
         // The message properties.
         \Log::info($message->content());
