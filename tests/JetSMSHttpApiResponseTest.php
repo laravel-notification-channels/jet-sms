@@ -4,6 +4,7 @@
  * Date: 22/11/2016
  * Time: 13:37.
  */
+
 namespace NotificationChannels\JetSMS\Test;
 
 use NotificationChannels\JetSMS\Clients\Http\JetSMSHttpApiResponse;

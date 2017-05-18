@@ -3,10 +3,11 @@
  * Author: Hilmi Erdem KEREN
  * Date: 17/11/2016.
  */
+
 namespace NotificationChannels\JetSMS\Clients;
 
-use NotificationChannels\JetSMS\Exceptions\CouldNotSendNotification;
 use NotificationChannels\JetSMS\JetSMSMessageInterface;
+use NotificationChannels\JetSMS\Exceptions\CouldNotSendNotification;
 
 /**
  * Interface JetSMSClientInterface.

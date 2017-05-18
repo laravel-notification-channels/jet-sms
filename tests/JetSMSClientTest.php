@@ -4,14 +4,15 @@
  * Date: 17/11/2016
  * Time: 23:06.
  */
+
 namespace NotificationChannels\JetSMS\Test;
 
 use Mockery as M;
 use GuzzleHttp\Client;
-use NotificationChannels\JetSMS\Exceptions\CouldNotBootClient;
 use Psr\Http\Message\MessageInterface;
 use NotificationChannels\JetSMS\JetSMSMessage;
 use NotificationChannels\JetSMS\Clients\Http\JetSMSClient;
+use NotificationChannels\JetSMS\Exceptions\CouldNotBootClient;
 use NotificationChannels\JetSMS\Exceptions\CouldNotSendNotification;
 
 class JetSMSClientTest extends \PHPUnit_Framework_TestCase

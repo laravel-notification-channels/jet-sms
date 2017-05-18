@@ -3,12 +3,13 @@
  * Author: Hilmi Erdem KEREN
  * Date: 17/11/2016.
  */
+
 namespace NotificationChannels\JetSMS\Clients\Http;
 
 use GuzzleHttp\Client as GuzzleHttpClient;
 use NotificationChannels\JetSMS\JetSMSMessageInterface;
-use NotificationChannels\JetSMS\Exceptions\CouldNotBootClient;
 use NotificationChannels\JetSMS\Clients\JetSMSClientInterface;
+use NotificationChannels\JetSMS\Exceptions\CouldNotBootClient;
 use NotificationChannels\JetSMS\Clients\JetSMSApiResponseInterface;
 use NotificationChannels\JetSMS\Exceptions\CouldNotSendNotification;
 
