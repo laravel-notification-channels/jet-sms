@@ -4,6 +4,7 @@
  * Date: 18/11/2016
  * Time: 00:39.
  */
+
 namespace NotificationChannels\JetSMS\Test;
 
 use Mockery as M;

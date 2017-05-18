@@ -3,6 +3,7 @@
  * Author: Hilmi Erdem KEREN
  * Date: 17/11/2016.
  */
+
 namespace NotificationChannels\JetSMS\Clients\Http;
 
 use NotificationChannels\JetSMS\Clients\JetSMSApiResponseInterface;
