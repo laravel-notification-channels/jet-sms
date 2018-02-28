@@ -6,9 +6,7 @@ use Exception;
 use Mockery as M;
 use NotificationChannels\JetSms\JetSms;
 use Illuminate\Notifications\Notification;
-use NotificationChannels\JetSms\JetSmsMessage;
 use NotificationChannels\JetSms\JetSmsChannel;
-use NotificationChannels\JetSms\JetSmsMessageInterface;
 use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
 use NotificationChannels\JetSms\Exceptions\CouldNotSendNotification;
 
@@ -54,7 +52,6 @@ class JetSmsChannelTest extends \PHPUnit_Framework_TestCase
         try {
             $this->channel->send(new EmptyTestNotifiable(), new TestNotification());
         } catch (Exception $e) {
-
         }
 
         $this->assertInstanceOf(CouldNotSendNotification::class, $e);
