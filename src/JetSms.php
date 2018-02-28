@@ -18,5 +18,8 @@ class JetSms extends Facade
      *
      * @return string
      */
-    protected static function getFacadeAccessor() { return 'jet-sms'; }
+    protected static function getFacadeAccessor()
+    {
+        return 'jet-sms';
+    }
 }

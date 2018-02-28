@@ -4,11 +4,10 @@ namespace NotificationChannels\JetSms;
 
 use GuzzleHttp\Client;
 use UnexpectedValueException;
-use Erdemkeren\JetSms\ShortMessage;
 use Erdemkeren\JetSms\Http\Clients;
+use Erdemkeren\JetSms\ShortMessage;
 use Erdemkeren\JetSms\JetSmsService;
 use Illuminate\Support\ServiceProvider;
-use NotificationChannels\JetSms\Events;
 use Erdemkeren\JetSms\ShortMessageFactory;
 use Erdemkeren\JetSms\ShortMessageCollection;
 use Erdemkeren\JetSms\ShortMessageCollectionFactory;
