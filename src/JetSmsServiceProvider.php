@@ -42,7 +42,6 @@ class JetSmsServiceProvider extends ServiceProvider
     private function registerJetSmsClient()
     {
         $this->app->bind(Clients\JetSmsClientInterface::class, function () {
-            $client = null;
             $username = config('services.JetSms.username');
             $password = config('services.JetSms.password');
             $originator = config('services.JetSms.originator');
