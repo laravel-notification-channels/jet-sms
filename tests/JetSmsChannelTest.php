@@ -2,6 +2,7 @@
 
 namespace NotificationChannels\JetSms\Test;
 
+use Erdemkeren\JetSms\ShortMessage;
 use Exception;
 use Mockery as M;
 use NotificationChannels\JetSms\JetSms;
@@ -45,6 +46,17 @@ class JetSmsChannelTest extends \PHPUnit_Framework_TestCase
         $this->channel->send(new TestNotifiable(), new TestNotification());
     }
 
+    public function test_it_sends_notification_with_short_message()
+    {
+        $message = new TestNotificationWithShortMessage();
+
+        JetSms::shouldReceive('sendShortMessage')
+            ->once()
+            ->andReturn($this->responseInterface);
+
+        $this->channel->send(new TestNotifiable(), $message);
+    }
+
     public function test_it_throws_exception_if_no_receiver_provided()
     {
         $e = null;
@@ -76,6 +88,19 @@ class TestNotification extends Notification
     public function toJetSms($notifiable)
     {
         return 'foo';
+    }
+}
+
+class TestNotificationWithShortMessage extends Notification
+{
+    public function via($notifiable)
+    {
+        return [JetSmsChannel::class];
+    }
+
+    public function toJetSms($notifiable)
+    {
+        return new ShortMessage('foo', 'bar');
     }
 }
 
