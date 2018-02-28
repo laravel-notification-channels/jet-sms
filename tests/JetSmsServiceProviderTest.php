@@ -3,11 +3,12 @@
 namespace NotificationChannels\JetSms\Test;
 
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Container\ContextualBindingBuilder;
 use NotificationChannels\JetSms\JetSmsServiceProvider;
 
-class JetSmsServiceProviderTest extends \PHPUnit_Framework_TestCase
+class JetSmsServiceProviderTest extends TestCase
 {
     private $app;
     private $contextualBindingBuilder;
@@ -38,6 +39,6 @@ class JetSmsServiceProviderTest extends \PHPUnit_Framework_TestCase
 
         $provider = new JetSmsServiceProvider($this->app);
 
-        $provider->boot();
+        $this->assertNull($provider->boot());
     }
 }

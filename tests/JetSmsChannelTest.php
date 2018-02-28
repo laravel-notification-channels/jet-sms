@@ -4,6 +4,7 @@ namespace NotificationChannels\JetSms\Test;
 
 use Exception;
 use Mockery as M;
+use PHPUnit\Framework\TestCase;
 use Erdemkeren\JetSms\ShortMessage;
 use NotificationChannels\JetSms\JetSms;
 use Illuminate\Notifications\Notification;
@@ -11,7 +12,7 @@ use NotificationChannels\JetSms\JetSmsChannel;
 use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
 use NotificationChannels\JetSms\Exceptions\CouldNotSendNotification;
 
-class JetSmsChannelTest extends \PHPUnit_Framework_TestCase
+class JetSmsChannelTest extends TestCase
 {
     /**
      * @var JetSmsChannel
@@ -43,7 +44,7 @@ class JetSmsChannelTest extends \PHPUnit_Framework_TestCase
             ->with('+1234567890', 'foo')
             ->andReturn($this->responseInterface);
 
-        $this->channel->send(new TestNotifiable(), new TestNotification());
+        $this->assertNull($this->channel->send(new TestNotifiable(), new TestNotification()));
     }
 
     public function test_it_sends_notification_with_short_message()
@@ -54,7 +55,7 @@ class JetSmsChannelTest extends \PHPUnit_Framework_TestCase
             ->once()
             ->andReturn($this->responseInterface);
 
-        $this->channel->send(new TestNotifiable(), $message);
+        $this->assertNull($this->channel->send(new TestNotifiable(), $message));
     }
 
     public function test_it_throws_exception_if_no_receiver_provided()
