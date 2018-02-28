@@ -2,9 +2,9 @@
 
 namespace NotificationChannels\JetSms\Test;
 
-use Erdemkeren\JetSms\ShortMessage;
 use Exception;
 use Mockery as M;
+use Erdemkeren\JetSms\ShortMessage;
 use NotificationChannels\JetSms\JetSms;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\JetSms\JetSmsChannel;
