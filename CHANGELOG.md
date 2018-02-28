@@ -6,6 +6,7 @@ All notable changes to `JetSms` will be documented in this file
 
 _This update includes api-breaking changes._
 
+- Minimum php requirement updated as >=7.0.
 - JetSms client functionality is not handed by this package anymore.
 - Inherits the common functionality from `erdemkeren/jet-sms-php`.
 - Replaces the `JetSMSMessage` class with `ShortMessage` class.
