@@ -8,7 +8,7 @@ use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
 /**
  * Class JetSms.
  *
- * @method static JetSmsResponseInterface sendShortMessage(array|string $receivers, string $body)
+ * @method static JetSmsResponseInterface sendShortMessage(array|string $receivers, string|null $body = null)
  * @method static JetSmsResponseInterface sendShortMessages(array $messages)
  */
 class JetSms extends Facade

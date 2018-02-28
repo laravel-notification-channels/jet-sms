@@ -58,7 +58,7 @@ configuration to your `config/services.php` file:
                                                                      
 ```php
 ...
-    'JetSMS' => [
+    'JetSms' => [
         'client'     => 'http', // or xml
         'http'       => [
             'endpoint' => 'https://service.jetsms.com.tr/SMS-Web/HttpSmsSend',

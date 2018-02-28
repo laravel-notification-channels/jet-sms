@@ -2,6 +2,7 @@
 
 namespace NotificationChannels\JetSms;
 
+use Erdemkeren\JetSms\ShortMessage;
 use Illuminate\Notifications\Notification;
 use NotificationChannels\JetSms\Exceptions\CouldNotSendNotification;
 
@@ -20,13 +21,19 @@ final class JetSmsChannel
      */
     public function send($notifiable, Notification $notification)
     {
+        $message = $notification->toJetSms($notifiable);
+
+        if ($message instanceof ShortMessage) {
+            JetSms::sendShortMessage($message);
+
+            return;
+        }
+
         $to = $notifiable->routeNotificationFor('JetSms');
 
         if (empty($to)) {
             throw CouldNotSendNotification::missingRecipient();
         }
-
-        $message = $notification->toJetSms($notifiable);
 
         JetSms::sendShortMessage($to, $message);
     }
