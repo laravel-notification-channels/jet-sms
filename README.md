@@ -1,4 +1,4 @@
-# JetSMS Notification Channel For Laravel 5.3
+# JetSms Notification Channel For Laravel 5.3
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jet-sms)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -9,12 +9,12 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/jet-sms/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jet-sms/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jet-sms)
 
-This package makes it easy to send notifications using [JetSMS](http://www.jetsms.net) with Laravel 5.3.
+This package makes it easy to send notifications using [JetSms](http://www.jetsms.net) with Laravel 5.3.
 
 ## Contents
 
 - [Installation](#installation)
-    - [Setting up the JetSMS service](#setting-up-the-jetsms-service)
+    - [Setting up the JetSms service](#setting-up-the-jetSms-service)
 - [Usage](#usage)
     - [Available methods](#available-methods)
     - [Available events](#available-events)
@@ -33,44 +33,54 @@ You can install this package via composer:
 ``` bash
 composer require laravel-notification-channels/jet-sms
 ```
+
 Next add the service provider to your `config/app.php`:
 
 ```php
-...
-'providers' => [
-    ...
-    NotificationChannels\JetSMS\JetSMSServiceProvider::class,
-],
-...
+/*
+ * Package Service Providers...
+ */
+
+NotificationChannels\JetSms\JetSmsServiceProvider::class,
 ```
 
-### Setting up the JetSMS service
+Register the JetSms alias to your application.
+This registration is not optional because the channel itself uses this very alias.
 
-You will need to register to JetSMS to use this channel.
+```php
+'JetSms' => NotificationChannels\JetSms\JetSms::class,
+```
 
-The configuration given by the JetSMS should be included within your `config/services.php` file:
+### Setting up the JetSms service
+
+Add your desired client, username, password, originator (outbox name, sender name) and request timeout
+configuration to your `config/services.php` file:
                                                                      
 ```php
 ...
-'JetSMS' => [
-    'http'       => [
-        'endpoint' => '',
+    'JetSMS' => [
+        'client'     => 'http', // or xml
+        'http'       => [
+            'endpoint' => 'https://service.jetsms.com.tr/SMS-Web/HttpSmsSend',
+        ],
+        'xml'        => [
+            'endpoint' => 'www.biotekno.biz:8080/SMS-Web/xmlsms',
+        ],
+        'username'   => '',
+        'password'   => '',
+        'originator' => "", // Sender name.
+        'timeout'    => 60,
     ],
-    'username'   => '',
-    'password'   => '',
-    'originator' => '', // Sender name.
-    'timeout'    => 60,
-],
 ...
 ```
 
 ## Usage
 
-Follow Laravel's [documentation](https://laravel.com/docs/master/notifications) to add the channel to your Notification class.
+Now you can use the channel in your via() method inside the notification:
 
 ```php
-use NotificationChannels\JetSMS\JetSMSChannel;
-use NotificationChannels\JetSMS\JetSMSMessage;
+use NotificationChannels\JetSms\JetSmsChannel;
+use NotificationChannels\JetSms\JetSmsMessage;
 
 class ResetPasswordWasRequested extends Notification
 {
@@ -82,31 +92,31 @@ class ResetPasswordWasRequested extends Notification
      */
     public function via($notifiable)
     {
-        return [JetSMSChannel::class];
+        return [JetSmsChannel::class];
     }
     
     /**
-     * Get the JetSMS representation of the notification.
+     * Get the JetSms representation of the notification.
      *
      * @param  mixed  $notifiable
-     * @return string|\NotificationChannels\JetSMS\JetSMSMessage
+     * @return string|\NotificationChannels\JetSms\JetSmsMessage
      */
-    public function toJetSMS($notifiable) {
+    public function toJetSms($notifiable) {
         return "Test notification";
         // Or
-        return new JetSMSMessage("Test notification", $notifiable->phone_number);
+        return new ShortMessage($notifiable->phone_number, 'Test notification');
     }
 }
 ```
 
-Don't forget to place the dedicated method for JetSMS inside your notifiables. (e.g. User)
+Don't forget to place the dedicated method for JetSms inside your notifiables. (e.g. User)
 
 ```php
 class User extends Authenticatable
 {
     use Notifiable;
     
-    public function routeNotificationForJetSMS()
+    public function routeNotificationForJetSms()
     {
         return "905123456789";
     }
@@ -115,30 +125,39 @@ class User extends Authenticatable
 
 ### Available methods
 
-Check out the constructor signature of JetSMSMessage:
+JetSms can also be used directly to send short messages.
 
+Examples:
 ```php
-public function __construct($content, $number, $originator = null, $sendDate = null);
+JetSms::sendShortMessage($to, $message);
+JetSms::sendShortMessages([[
+    'recipient' => $to,
+    'message'   => $message,
+], [
+    'recipient' => $anotherTo,
+    'message'   => $anotherMessage,
+]]);
 ```
 
-If you both place the originator (Outbox name) to your configuration and
-your JetSMSMessage instance, the outbox name set by the JetSMSMessage
-instance will be valid.
+see: [jet-sms-php](https://github.com/erdemkeren/jet-sms-php) documentation for more information.
 
 ### Available events
 
-JetSMS Notification channel comes with two handy events which provides the required information about the SMS messages.
+JetSms Notification channel comes with handy events which provides the required information about the SMS messages.
 
-1. **Message Was Sent** (`NotificationChannels\JetSMS\Events\MessageWasSent`)
+1. **Message Was Sent** (`NotificationChannels\JetSms\Events\MessageWasSent`)
+2. **Messages Were Sent** (`NotificationChannels\JetSms\Events\MessageWasSent`)
+3. **Sending Message** (`NotificationChannels\JetSms\Events\SendingMessage`)
+4. **Sending Messages** (`NotificationChannels\JetSms\Events\SendingMessages`)
 
-This event is fired shortly after the message is sent. An example handler is presented below:
+Example:
 
 ```php
 namespace App\Listeners;
 
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use NotificationChannels\JetSMS\Events\MessageWasSent;
+use NotificationChannels\JetSms\Events\MessageWasSent;
 
 class SentMessageHandler
 {
@@ -152,63 +171,16 @@ class SentMessageHandler
     {
         $response = $event->response;
         $message = $event->message;
-
-        // The message properties.
-        \Log::info($message->content());
-        \Log::info($message->number());
-        \Log::info($message->originator());
-        \Log::info($message->sendDate());
-
-        // Message as array.
-        \Log::info($message->toArray());
-
-        // API Response properties.
-        \Log::info($response->isSuccess());
-        \Log::info($response->errorCode());
-        \Log::info($response->errorMessage());
-        \Log::info($response->messageReportIdentifiers());
-    }
-}
-```
-
-2. **Sending Message** (`NotificationChannels\JetSMS\Events`)
-
-This event is fired just before the send request. An example handler is presented below.
-
-```php
-namespace App\Listeners;
-
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use NotificationChannels\JetSMS\Events\SendingMessage;
-
-class SendingMessageHandler
-{
-    /**
-     * Handle the event.
-     *
-     * @param  SendingMessage  $event
-     * @return void
-     */
-    public function handle(SendingMessage $event)
-    {
-        $message = $event->message;
-
-        // The message properties.
-        \Log::info($message->content());
-        \Log::info($message->number());
-        \Log::info($message->originator());
-        \Log::info($message->sendDate());
-
-        // Message as array.
-        \Log::info($message->toArray());
     }
 }
 ```
 
 ### Notes
 
-The JetSMS message is immutable. Once constructed, no way to mutate.
+$response->groupId() will throw BadMethodCallException if the client is set to 'http'. 
+$response->messageReportIdentifiers() will throw BadMethodCallException if the client is set to 'xml'.
+
+change client configuration with caution.
 
 ## Changelog
 

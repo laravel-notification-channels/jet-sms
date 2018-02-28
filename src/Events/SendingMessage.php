@@ -1,12 +1,8 @@
 <?php
-/**
- * Author: Hilmi Erdem KEREN
- * Date: 17/11/2016.
- */
 
-namespace NotificationChannels\JetSMS\Events;
+namespace NotificationChannels\JetSms\Events;
 
-use NotificationChannels\JetSMS\JetSMSMessageInterface;
+use Erdemkeren\JetSms\ShortMessage;
 
 /**
  * Class SendingMessage.
@@ -14,9 +10,9 @@ use NotificationChannels\JetSMS\JetSMSMessageInterface;
 class SendingMessage
 {
     /**
-     * The JetSMS message.
+     * The JetSms message.
      *
-     * @var JetSMSMessageInterface
+     * @var ShortMessage
      */
     public $message;
 
@@ -25,7 +21,7 @@ class SendingMessage
      *
      * @param $message
      */
-    public function __construct(JetSMSMessageInterface $message)
+    public function __construct(ShortMessage $message)
     {
         $this->message = $message;
     }

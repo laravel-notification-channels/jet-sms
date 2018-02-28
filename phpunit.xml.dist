@@ -10,7 +10,7 @@
          processIsolation="false"
          stopOnFailure="false">
     <testsuites>
-        <testsuite name="JetSMS Test Suite">
+        <testsuite name="JetSms Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>
@@ -18,7 +18,7 @@
         <whitelist>
             <directory suffix=".php">src/</directory>
             <exclude>
-                <file>src/JetSMSServiceProvider.php</file>
+                <file>src/JetSmsServiceProvider.php</file>
             </exclude>
         </whitelist>
     </filter>

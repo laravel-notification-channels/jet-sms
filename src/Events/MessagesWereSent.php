@@ -2,20 +2,20 @@
 
 namespace NotificationChannels\JetSms\Events;
 
-use Erdemkeren\JetSms\ShortMessage;
+use Erdemkeren\JetSms\ShortMessageCollection;
 use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
 
 /**
- * Class MessageWasSent.
+ * Class MessagesWereSent.
  */
-class MessageWasSent
+class MessagesWereSent
 {
     /**
      * The sms message.
      *
-     * @var ShortMessage
+     * @var ShortMessageCollection
      */
-    public $message;
+    public $messages;
 
     /**
      * The Api response implementation.
@@ -27,12 +27,12 @@ class MessageWasSent
     /**
      * MessageWasSent constructor.
      *
-     * @param ShortMessage            $message
+     * @param ShortMessageCollection  $messages
      * @param JetSmsResponseInterface $response
      */
-    public function __construct(ShortMessage $message, JetSmsResponseInterface $response)
+    public function __construct(ShortMessageCollection $messages, JetSmsResponseInterface $response)
     {
-        $this->message = $message;
+        $this->messages = $messages;
         $this->response = $response;
     }
 }
