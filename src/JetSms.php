@@ -2,14 +2,16 @@
 
 namespace NotificationChannels\JetSms;
 
+use Erdemkeren\JetSms\ShortMessage;
 use Illuminate\Support\Facades\Facade;
+use Erdemkeren\JetSms\ShortMessageCollection;
 use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
 
 /**
  * Class JetSms.
  *
- * @method static JetSmsResponseInterface sendShortMessage(array|string $receivers, string|null $body = null)
- * @method static JetSmsResponseInterface sendShortMessages(array $messages)
+ * @method static JetSmsResponseInterface sendShortMessage(array|string|ShortMessage $receivers, string|null $body = null)
+ * @method static JetSmsResponseInterface sendShortMessages(array|ShortMessageCollection $messages)
  */
 class JetSms extends Facade
 {
