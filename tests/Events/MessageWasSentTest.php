@@ -1,6 +1,6 @@
 <?php
 
-namespace NotificationChannels\JetSMS\Test\Events;
+namespace NotificationChannels\JetSms\Test\Events;
 
 use Mockery as M;
 use PHPUnit\Framework\TestCase;
