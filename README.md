@@ -4,7 +4,6 @@
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://img.shields.io/travis/laravel-notification-channels/jet-sms/master.svg?style=flat-square)](https://travis-ci.org/laravel-notification-channels/jet-sms)
 [![StyleCI](https://styleci.io/repos/74304440/shield?branch=master)](https://styleci.io/repos/74304440)
-[![SensioLabsInsight](https://img.shields.io/sensiolabs/i/ce5f111f-1be4-4848-a87d-7b2570d153d4.svg?style=flat-square)](https://insight.sensiolabs.com/projects/ce5f111f-1be4-4848-a87d-7b2570d153d4)
 [![Quality Score](https://img.shields.io/scrutinizer/g/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jet-sms)
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/jet-sms/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jet-sms/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jet-sms)
