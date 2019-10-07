@@ -10,12 +10,7 @@ use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
 
 class MessagesWereSentTest extends TestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-    }
-
-    public function tearDown()
+    public function tearDown(): void
     {
         M::close();
 

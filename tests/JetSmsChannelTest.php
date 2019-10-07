@@ -24,7 +24,7 @@ class JetSmsChannelTest extends TestCase
      */
     private $responseInterface;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -32,7 +32,7 @@ class JetSmsChannelTest extends TestCase
         $this->responseInterface = M::mock(JetSmsResponseInterface::class);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         parent::tearDown();
     }

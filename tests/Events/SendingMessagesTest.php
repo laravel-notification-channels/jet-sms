@@ -9,12 +9,7 @@ use NotificationChannels\JetSms\Events\SendingMessages;
 
 class SendingMessagesTest extends TestCase
 {
-    public function setUp()
-    {
-        parent::setUp();
-    }
-
-    public function tearDown()
+    public function tearDown(): void
     {
         M::close();
 

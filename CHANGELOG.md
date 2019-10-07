@@ -2,6 +2,14 @@
 
 All notable changes to `JetSms` will be documented in this file
 
+## 3.0.0 - 2019-10-07
+
+_This update includes api-breaking changes._
+
+- Minimum php requirement updated as >=7.2.
+- Laravel requirement updated as 6.*.
+- Updates docs.
+
 ## 2.0.0 - 2017-02-28
 
 _This update includes api-breaking changes._

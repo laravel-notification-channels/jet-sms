@@ -13,7 +13,7 @@ class JetSmsServiceProviderTest extends TestCase
     private $app;
     private $contextualBindingBuilder;
 
-    public function setUp()
+    public function setUp(): void
     {
         parent::setUp();
 
@@ -21,7 +21,7 @@ class JetSmsServiceProviderTest extends TestCase
         $this->contextualBindingBuilder = M::mock(ContextualBindingBuilder::class);
     }
 
-    public function tearDown()
+    public function tearDown(): void
     {
         M::close();
 
