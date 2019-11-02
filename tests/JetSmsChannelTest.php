@@ -2,15 +2,15 @@
 
 namespace NotificationChannels\JetSms\Test;
 
-use Exception;
-use Mockery as M;
-use PHPUnit\Framework\TestCase;
-use Erdemkeren\JetSms\ShortMessage;
-use NotificationChannels\JetSms\JetSms;
-use Illuminate\Notifications\Notification;
-use NotificationChannels\JetSms\JetSmsChannel;
 use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
+use Erdemkeren\JetSms\ShortMessage;
+use Exception;
+use Illuminate\Notifications\Notification;
+use Mockery as M;
 use NotificationChannels\JetSms\Exceptions\CouldNotSendNotification;
+use NotificationChannels\JetSms\JetSms;
+use NotificationChannels\JetSms\JetSmsChannel;
+use PHPUnit\Framework\TestCase;
 
 class JetSmsChannelTest extends TestCase
 {

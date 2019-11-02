@@ -2,10 +2,10 @@
 
 namespace NotificationChannels\JetSms;
 
-use Erdemkeren\JetSms\ShortMessage;
-use Illuminate\Support\Facades\Facade;
-use Erdemkeren\JetSms\ShortMessageCollection;
 use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
+use Erdemkeren\JetSms\ShortMessage;
+use Erdemkeren\JetSms\ShortMessageCollection;
+use Illuminate\Support\Facades\Facade;
 
 /**
  * Class JetSms.

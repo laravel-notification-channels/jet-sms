@@ -2,11 +2,11 @@
 
 namespace NotificationChannels\JetSms\Test\Events;
 
-use Mockery as M;
-use PHPUnit\Framework\TestCase;
-use Erdemkeren\JetSms\ShortMessage;
-use NotificationChannels\JetSms\Events\MessageWasSent;
 use Erdemkeren\JetSms\Http\Responses\JetSmsResponseInterface;
+use Erdemkeren\JetSms\ShortMessage;
+use Mockery as M;
+use NotificationChannels\JetSms\Events\MessageWasSent;
+use PHPUnit\Framework\TestCase;
 
 class MessageWasSentTest extends TestCase
 {
