@@ -2,11 +2,11 @@
 
 namespace NotificationChannels\JetSms\Test;
 
-use Mockery as M;
-use PHPUnit\Framework\TestCase;
-use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Container\ContextualBindingBuilder;
+use Illuminate\Contracts\Foundation\Application;
+use Mockery as M;
 use NotificationChannels\JetSms\JetSmsServiceProvider;
+use PHPUnit\Framework\TestCase;
 
 class JetSmsServiceProviderTest extends TestCase
 {

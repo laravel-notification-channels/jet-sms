@@ -2,10 +2,10 @@
 
 namespace NotificationChannels\JetSms\Test\Events;
 
-use Mockery as M;
-use PHPUnit\Framework\TestCase;
 use Erdemkeren\JetSms\ShortMessageCollection;
+use Mockery as M;
 use NotificationChannels\JetSms\Events\SendingMessages;
+use PHPUnit\Framework\TestCase;
 
 class SendingMessagesTest extends TestCase
 {
