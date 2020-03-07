@@ -8,7 +8,7 @@
 [![Code Coverage](https://img.shields.io/scrutinizer/coverage/g/laravel-notification-channels/jet-sms/master.svg?style=flat-square)](https://scrutinizer-ci.com/g/laravel-notification-channels/jet-sms/?branch=master)
 [![Total Downloads](https://img.shields.io/packagist/dt/laravel-notification-channels/jet-sms.svg?style=flat-square)](https://packagist.org/packages/laravel-notification-channels/jet-sms)
 
-This package makes it easy to send notifications using [JetSms](http://www.jetsms.net) with Laravel 5.3.
+This package makes it easy to send notifications using [JetSms](http://www.jetsms.net) with Laravel 5.5+, 6.x and 7.x.
 
 ## Contents
 
@@ -31,23 +31,6 @@ You can install this package via composer:
 
 ``` bash
 composer require laravel-notification-channels/jet-sms
-```
-
-Next add the service provider to your `config/app.php`:
-
-```php
-/*
- * Package Service Providers...
- */
-
-NotificationChannels\JetSms\JetSmsServiceProvider::class,
-```
-
-Register the JetSms alias to your application.
-This registration is not optional because the channel itself uses this very alias.
-
-```php
-'JetSms' => NotificationChannels\JetSms\JetSms::class,
 ```
 
 ### Setting up the JetSms service
